@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { Grid, GridProps } from './Grid';
 
 export default {
-  title: 'Atoms/Grid/Grid',
+  title: 'Atoms/Layout/Grid',
   component: Grid,
 } as Meta;
 
