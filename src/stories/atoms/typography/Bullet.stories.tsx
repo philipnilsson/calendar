@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Bullet } from './Bullet';
 import { H1 } from './H1';
 import { Body } from './Body';
@@ -9,5 +9,20 @@ export default {
   component: Bullet,
 } as Meta;
 
-export const WithBody = () => <Body><Bullet /> Header!</Body>
-export const WithHeader = () => <H1><Bullet /> Header!</H1>
+export const WithBody: Story<{ color: string }> = (args: any) => (
+  <Body>
+    <Bullet {...args} /> Header!
+  </Body>
+)
+
+WithBody.args = {
+  color: 'green'
+}
+
+export const WithHeader: Story<{ color: string }> = (args: any) =>
+  <H1><Bullet {...args} /> Header!</H1>
+
+WithHeader.args = {
+  color: 'red'
+}
+

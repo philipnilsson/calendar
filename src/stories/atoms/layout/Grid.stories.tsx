@@ -8,12 +8,11 @@ export default {
 } as Meta;
 
 const Template: Story<GridProps> =
-  (args) => (
-    <Grid {...args} />
-  );
+  (args) => <Grid {...args} />
 
-export const View = Template.bind({});
-View.args = {
+export const grid = Template.bind({});
+
+grid.args = {
   rows: 3,
   cols: 3,
   renderCell: (i, j) =>
