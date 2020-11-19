@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Circled } from './Circled';
-import { Body } from './Body';
-import { Small } from './Small';
+import { Large } from './Large';
 
 export default {
   title: 'Atoms/Typography/Circled',
@@ -15,11 +14,11 @@ const Template: Story<{ active: boolean, children: ReactNode }> =
 export const Inactive = Template.bind({});
 Inactive.args = {
   active: false,
-  children: <Body>6</Body>
+  children: <Large>6</Large>
 }
 
 export const Active = Template.bind({});
 Active.args = {
   active: true,
-  children: <Small>6</Small>
+  children: <Large>6</Large>
 }
