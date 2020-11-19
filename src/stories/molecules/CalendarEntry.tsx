@@ -14,7 +14,6 @@ export const CalendarEntry = styled.div<CalendarEntryProps>`
   border-radius: .5rem;
   color: white;
   padding: .5em .75em;
-  box-sizing: border-box;
   width: calc(100% - 1.375em);
   height: calc(${props => 100 * props.height}% - 0.25rem);
   top: ${props => 100 * props.offset}%;

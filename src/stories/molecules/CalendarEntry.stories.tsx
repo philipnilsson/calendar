@@ -12,7 +12,7 @@ export default {
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  background: #eee;
+  background: white;
   height: 10rem;
   width: 10rem;
 `
@@ -28,7 +28,6 @@ const Template: Story<CalendarEntryProps> =
       </CalendarEntry>
     </Wrapper>
   );
-
 
 export const Full = Template.bind({});
 Full.args = {
