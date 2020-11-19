@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { H1 } from './H1';
+import { H3 } from './H3';
 
 export default {
-  title: 'Atoms/Typography/H1',
-  component: H1,
+  title: 'Atoms/Typography/H3',
+  component: H3,
 } as Meta;
 
 const Template: Story<{}> =
-  (args) => <H1 {...args} />;
+  (args) => <H3 {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
