@@ -50,6 +50,19 @@ Toggle in the UI
  
     A vertical slice for the calendar page.
 
+* `/calendar/models`
+   
+   Domain models (typically observable via MobX)
+   
+* `/calendar/services`
+
+    The Google Calendar API service.
+
+### Language
+
+I always use TypeScript unless there's a specific
+reason. Productivity++.
+
 ### State management
 
 Standard MobX. Helps with quicker prototyping compared to Redux.
@@ -57,14 +70,16 @@ Standard MobX. Helps with quicker prototyping compared to Redux.
 ### Styling
 
 Styled components. Nothing unusual. TypeScript support for themes is
-set up.
+set up, so everything type safe.
 
 # Current limitations
 
+ * Will add a couple of tests before calling it done
+ 
  * No loading or error states
 
- * Not responsive design
+ * No responsive design
 
- * No mocking out of the API and testing the main App component.
+ * Hard dependency on the google calendar service
  
  * No Prettier / commit hooks etc
