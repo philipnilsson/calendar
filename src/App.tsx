@@ -1,10 +1,15 @@
-import React from "react";
-import { CalendarPage } from "./stories/pages/CalendarPage";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import { CalendarPage } from './stories/pages/CalendarPage';
+import { createGlobalStyle } from 'styled-components';
+import { testMenu, testRenderCalendarLabel, testRenderCalendarHeader, testRenderCalendarEntry } from './stories/helpers';
 
 const Globals = createGlobalStyle`
   html {
     font-size: 15px;
+  }
+  
+  * {
+    box-sizing: border-box;
   }
   
   body { 
@@ -15,9 +20,14 @@ const Globals = createGlobalStyle`
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Globals />
-      <CalendarPage />
+      <CalendarPage
+        items={testMenu}
+        renderCalendarEntry={testRenderCalendarEntry}
+        renderCalendarLabel={testRenderCalendarLabel}
+        renderCalendarHeader={testRenderCalendarHeader}
+      />
     </div>
   );
 }
