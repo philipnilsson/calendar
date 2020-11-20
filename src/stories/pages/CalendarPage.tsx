@@ -81,7 +81,7 @@ export const CalendarPage = styled(function({
   }
   
   ${Calendar} {
-    height: 100%;
+    height: calc(100% - 4em);
     overflow-y: auto;
     overflow-x: hidden;
     -ms-overflow-style: none;
