@@ -35,6 +35,13 @@ class CalendarApp {
             fulfilled: list => list
         })
     }
+
+    renderLabelAMPM = (hour: number): string => {
+        if (hour >= 12) {
+            return `${hour - 12 + 1} PM`
+        }
+        return `${hour + 1} AM`
+    }
 }
 
 export const calendarApp =

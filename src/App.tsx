@@ -1,11 +1,12 @@
 import React from 'react';
 import { CalendarPage } from './stories/pages/CalendarPage';
-import { testRenderCalendarLabel, testRenderCalendarHeader } from './stories/helpers';
+import { testRenderCalendarHeader } from './stories/helpers';
 import { CalendarEntry } from './stories/molecules/CalendarEntry';
 import { calendarApp } from './calendar'
 import { addDays } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import { Small } from './stories/atoms/typography/Small';
+import { Tiny } from './stories/atoms/typography/Tiny';
 
 const App = observer(function App() {
   calendarApp.events.case({
@@ -32,7 +33,11 @@ const App = observer(function App() {
             )
           }
         }}
-        renderCalendarLabel={testRenderCalendarLabel}
+
+        renderCalendarLabel={(hour) => {
+          return <Tiny>{calendarApp.renderLabelAMPM(hour)}</Tiny>
+        }}
+
         renderCalendarHeader={testRenderCalendarHeader}
       />
     </div>
