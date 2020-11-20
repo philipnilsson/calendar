@@ -14,7 +14,7 @@ const Sidebar = styled(function Menu({ items, ...rest }: { items: typeof testMen
       <H3>Calendars</H3>
       <nav>
         <ul>
-          {items.map(props => <MenuItem {...props} />)}
+          {items.map(props => <MenuItem key={props.title} {...props} />)}
         </ul>
       </nav>
     </div>

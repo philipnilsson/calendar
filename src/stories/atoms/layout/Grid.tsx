@@ -16,7 +16,6 @@ const StyledGrid = styled.div<{ cols: number } >`
 export const GridCell = styled.div`
   width: 100%;
   height: 100%;
-  background: white;
   border-left: 1px solid #e2e1df;
   border-bottom: 1px solid #e2e1df;
 `
@@ -26,7 +25,7 @@ export const Grid = styled(function Grid({ renderCell, cols, rows, ...props }: G
     <StyledGrid cols={cols} {...props}>
       {[...Array(rows)].map((_, i) =>
         [...Array(cols)].map((_, j) =>
-          <GridCell>{renderCell(i, j)}</GridCell>))
+          <GridCell key={i + '-' + j}>{renderCell(i, j)}</GridCell>))
       }
     </StyledGrid>
   )

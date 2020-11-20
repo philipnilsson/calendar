@@ -9,7 +9,7 @@ export type MenuItemProps = {
   color: string
 }
 
-export const MenuItem = styled(function MenuItem({ color, title, ...props }) {
+export const MenuItem = styled(function MenuItem({ active, color, title, ...props }) {
   return (
     <li {...props}>
       <Bullet color={color} />
