@@ -8,8 +8,8 @@ import { CalendarHeader } from './stories/molecules/CalendarHeader';
 import { Body } from './stories/atoms/typography/Body';
 import { Circled } from './stories/atoms/typography/Circled';
 import { Large } from './stories/atoms/typography/Large';
-import { AppHeader } from './AppHeader';
-import { Entry } from './Entry';
+import { AppHeader } from './calendar/presenters/AppHeader';
+import { Entry } from './calendar/presenters/Entry';
 
 const App = observer(function App() {
   React.useLayoutEffect(() => {
