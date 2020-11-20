@@ -3,7 +3,7 @@ import { fromPromise } from "mobx-utils";
 import { CalendarEventList } from './CalendarEventList';
 import { Calendar } from './Calendar';
 import { getEvents, loadCalendars } from './GAPI';
-import { startOfDay } from 'date-fns';
+import { addDays, startOfDay } from 'date-fns';
 
 class CalendarApp {
     constructor(
@@ -21,7 +21,11 @@ class CalendarApp {
     get events() {
         const requests = this.calendars
             .filter(c => c.active)
-            .map(c => getEvents(c.id, this.date.toISOString()))
+            .map(c => getEvents(
+                c.id,
+                this.date.toISOString(),
+                addDays(this.date, 7).toISOString()
+            ))
 
         const allRequests =
             Promise.all(requests).then(x => new CalendarEventList(x.flat()))
@@ -43,8 +47,20 @@ class CalendarApp {
         }
         return `${hour + 1} AM`
     }
+
+    nextWeek() {
+        this.date =
+            addDays(this.date, 7)
+    }
+
+    previousWeek() {
+        this.date =
+            addDays(this.date, -7)
+    }
 }
 
 export const calendarApp =
     new CalendarApp(startOfDay(new Date()))
 
+
+    ; (window as any).calendarApp = calendarApp
