@@ -1,80 +1,42 @@
-import React from "react";
-import { makeAutoObservable } from 'mobx'
+import { flow, makeAutoObservable } from 'mobx'
+import { fromPromise } from "mobx-utils";
+import { CalendarEventList } from './CalendarEventList';
+import { Calendar } from './Calendar';
+import { getEvents, loadCalendars } from './GAPI';
 
-declare var gapi: any
-
-const DISCOVERY_DOCS =
-    ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
-
-const SCOPES =
-    'https://www.googleapis.com/auth/calendar.readonly';
-
-let calendarAPI = new Promise<any>((resolve, reject) => {
-    document.getElementById('gapi')!.onload = function() {
-        gapi.load('client:auth2', () => {
-            gapi.client.init({
-                apiKey: process.env.REACT_APP_API_KEY,
-                clientId: process.env.REACT_APP_CLIENT_ID,
-                discoveryDocs: DISCOVERY_DOCS,
-                scope: SCOPES
-            }).then(() => {
-                if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
-                    gapi.auth2.getAuthInstance().signIn();
-                    gapi.auth2.getAuthInstance().isSignedIn.listen(() => resolve(gapi));
-                } else {
-                    resolve(gapi)
-                }
-            }, reject)
-        })
-    }
-})
-
-type Calendar = {
-    id: string,
-    summary: string,
-    colorId: number
-}
-
-class CalendarApi {
-    calendars: Calendar[] = []
-
-    constructor() {
+class CalendarApp {
+    constructor(
+        public date: Date = new Date(),
+        public calendars: Calendar[] = [],
+    ) {
         makeAutoObservable(this);
-        (async () => {
-            const api = await calendarAPI
-            const { result: { items: calendarItems } } =
-                await api.client.calendar.calendarList.list()
-            this.calendars = calendarItems
-        })()
+        this.init()
+    }
+
+    @flow * init() {
+        this.calendars = yield loadCalendars()
+    }
+
+    get events() {
+        const requests = this.calendars
+            .filter(c => c.active)
+            .map(c => getEvents(c.id, this.date.toISOString()))
+
+        const allRequests =
+            Promise.all(requests).then(x => new CalendarEventList(x.flat()))
+
+        return fromPromise(allRequests)
+    }
+
+    get calendarEvents(): CalendarEventList {
+        return this.events.case({
+            pending: () => CalendarEventList.EMPTY,
+            rejected: () => CalendarEventList.EMPTY,
+            fulfilled: list => list
+        })
     }
 }
 
 export const calendarApp =
-    new CalendarApi()
+    new CalendarApp()
 
-// async function requestCalendarEvents(date = new Date()) {
-//     const { result: { items: calendarItems } } =
-//         await gapi.client.calendar.calendarList.list()
-
-//     const response = await gapi.client.calendar.events.list({
-//         'calendarId': calendarItems[1].id,
-//         'timeMin': date.toISOString(),
-//         'showDeleted': false,
-//         'singleEvents': true,
-//         'maxResults': 10,
-//         'orderBy': 'startTime'
-//     })
-//     console.log('events!', response.result.items)
-//     return calendarItems
-// }
-
-
-// export function useCalendars() {
-//     const [calendars, setCalendars] =
-//         React.useState<null | Calendar>(null)
-
-//     React.useEffect(() => {
-//         (async () => {
-//         })()
-//     })
-// }
