@@ -40,10 +40,10 @@ export async function logIn() {
     })
 }
 
-export const getEvents = memoizee(async (calendarId: string, dateFrom: string, dateTo: string): Promise<CalendarEvent[]> => {
+export const getEvents = memoizee(async (calendarID: string, dateFrom: string, dateTo: string): Promise<CalendarEvent[]> => {
     const api = await calendarAPI
     const results = await api.client.calendar.events.list({
-        'calendarId': calendarId,
+        'calendarId': calendarID,
         'timeMin': dateFrom,
         'timeMax': dateTo,
         'showDeleted': false,
@@ -51,7 +51,8 @@ export const getEvents = memoizee(async (calendarId: string, dateFrom: string, d
         'maxResults': 100,
         'orderBy': 'startTime'
     })
-    return results.result.items.map(CalendarEvent.fromGAPI)
+    return results.result.items.map((result: any) =>
+        CalendarEvent.fromGAPI(result, calendarID))
 })
 
 export const loadCalendars = memoizee(async (): Promise<Calendar[]> => {

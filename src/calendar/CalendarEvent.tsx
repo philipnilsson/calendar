@@ -11,6 +11,7 @@ export class CalendarEvent {
   constructor(
     public date: Date,
     public endDate: Date,
+    public calendarID: string,
     public title: string,
     public description: string,
     public startHour: number,
@@ -35,7 +36,7 @@ export class CalendarEvent {
     return `${this.formatHour(this.date)} — ${this.formatHour(this.endDate)}`
   }
 
-  static fromGAPI(result: GAPIEvent) {
+  static fromGAPI(result: GAPIEvent, calendarID?: string) {
 
     const startDate =
       'date' in result.start
@@ -62,9 +63,12 @@ export class CalendarEvent {
         ? 24
         : differenceInMinutes(endDate, startDate) / 60
 
+    console.log('12131231232131', calendarID)
+
     return new CalendarEvent(
       startDate,
       endDate,
+      calendarID || '',
       result.summary,
       result.description,
       startHour,

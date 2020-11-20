@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-
-const teal = 'teal'
+import { ThemeType } from '../../theme/theme'
 
 export type CalendarEntryProps = {
   offset: number,
-  height: number
+  height: number,
+  color?: keyof ThemeType
 }
 
 export const CalendarEntry = styled.div<CalendarEntryProps>`
   position: absolute;
   z-index: 10;
-  background: ${teal};
+  background: ${props => props.theme[props.color ?? 'green']};
   margin: .125rem;
   border-radius: .5rem;
   color: white;

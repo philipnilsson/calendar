@@ -1,7 +1,7 @@
 export type ThemeType = typeof light;
 
 export const light = {
-    red: 'red',
+    red: '#811212',
     blue: '#5d6ae3',
     green: 'teal',
     dark: '#222',

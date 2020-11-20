@@ -1,7 +1,8 @@
 import { makeAutoObservable } from "mobx"
+import { ThemeType } from "../theme/theme"
 
-const COLORS =
-  ['green', 'red', 'blue', 'purple']
+const COLORS: (keyof ThemeType)[] =
+  ['green', 'red', 'blue']
 
 type GAPICalendar = {
   id: string,
@@ -14,7 +15,7 @@ export class Calendar {
   constructor(
     public id: string,
     public title: string,
-    public color: string,
+    public color: keyof ThemeType,
     public active: boolean,
   ) {
     makeAutoObservable(this)
