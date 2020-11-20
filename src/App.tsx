@@ -1,6 +1,5 @@
 import React from 'react';
 import { CalendarPage } from './stories/pages/CalendarPage';
-import { createGlobalStyle } from 'styled-components';
 import { testRenderCalendarLabel, testRenderCalendarHeader } from './stories/helpers';
 import { CalendarEntry } from './stories/molecules/CalendarEntry';
 import { calendarApp } from './calendar'
@@ -8,28 +7,12 @@ import { addDays } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import { Small } from './stories/atoms/typography/Small';
 
-const Globals = createGlobalStyle`
-  html {
-    font-size: 15px;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  body { 
-    margin: 0;
-    padding: 0;
-  }
-`
-
 const App = observer(function App() {
   calendarApp.events.case({
     fulfilled: x => x
   })
   return (
     <div>
-      <Globals />
       <CalendarPage
         items={calendarApp.calendars.map(c => ({ ...c, onClick: c.toggleActive }))}
         renderCalendarEntry={(hour, day_offset) => {

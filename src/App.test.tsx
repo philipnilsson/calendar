@@ -4,5 +4,4 @@ import App from './App';
 
 test('it renders', () => {
   render(<App />)
-
 });
