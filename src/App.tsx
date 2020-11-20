@@ -3,6 +3,10 @@ import { CalendarPage } from "./stories/pages/CalendarPage";
 import { createGlobalStyle } from "styled-components";
 
 const Globals = createGlobalStyle`
+  html {
+    font-size: 15px;
+  }
+  
   body { 
     margin: 0;
     padding: 0;

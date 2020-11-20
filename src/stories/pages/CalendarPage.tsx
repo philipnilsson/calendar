@@ -50,23 +50,25 @@ export const CalendarPage = styled(function(props) {
 })`
   width: 100vw;
   height: 100vh;
-  background: #f5f4ef;
+  background: #f5f4f0;
   
   display: grid;
   grid-template-areas: 
     'header header'
     'sidebar main';
-  grid-template-columns: 12em 1fr;
+  grid-template-columns: 14rem 1fr;
   grid-template-rows: auto 1fr;
   
   ${H1} {
     grid-area: header;
     border-bottom: 1px solid;
     border-color: #e2e1df;
+    padding: 1.5rem 1.5rem;
   }
   
   ${Sidebar} {
     grid-area: sidebar;
+    padding: 1.5rem 0 1.5rem 1.5rem;
   }
   
   ${Card} {
