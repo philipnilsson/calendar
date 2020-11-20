@@ -1,6 +1,6 @@
 import memoizee from "memoizee"
-import { Calendar } from "./Calendar"
-import { CalendarEvent } from "./CalendarEvent"
+import { Calendar } from "./models/Calendar"
+import { CalendarEvent } from "./models/CalendarEvent"
 
 declare var gapi: any
 

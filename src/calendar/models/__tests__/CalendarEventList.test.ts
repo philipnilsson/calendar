@@ -1,4 +1,4 @@
-import { endOfDay, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns'
 import { CalendarEvent } from '../CalendarEvent'
 import { CalendarEventList } from '../CalendarEventList'
 

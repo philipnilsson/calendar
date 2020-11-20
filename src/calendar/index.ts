@@ -1,7 +1,7 @@
 import { flow, makeAutoObservable } from 'mobx'
 import { fromPromise } from "mobx-utils";
-import { CalendarEventList } from './CalendarEventList';
-import { Calendar } from './Calendar';
+import { CalendarEventList } from './models/CalendarEventList';
+import { Calendar } from './models/Calendar';
 import { getEvents, loadCalendars, logIn, logOut, isLoggedIn } from './GAPI';
 import { addDays, startOfDay } from 'date-fns';
 
