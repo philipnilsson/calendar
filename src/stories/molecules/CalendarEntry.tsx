@@ -9,6 +9,7 @@ export type CalendarEntryProps = {
 
 export const CalendarEntry = styled.div<CalendarEntryProps>`
   position: absolute;
+  z-index: 10;
   background: ${teal};
   margin: .125rem;
   border-radius: .5rem;

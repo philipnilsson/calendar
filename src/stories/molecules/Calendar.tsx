@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { Grid } from '../atoms/layout/Grid'
 
 export type CalendarProps = {
-  renderEntry: (i: number, j: number) => ReactNode
+  renderEntry: (i: number, j: number) => ReactNode,
+  renderLabel: (j: number) => ReactNode,
 }
 
 const Cell = styled.div`
@@ -11,14 +12,23 @@ const Cell = styled.div`
   min-height: 5em;
 `
 
-export function Calendar(props: CalendarProps) {
+const Label = styled.div`
+  position: absolute;
+  z-index: 1000;
+  bottom: -0.5em;
+  right: calc(100% + .5em);
+  white-space: nowrap;
+`
+
+export const Calendar = styled(function Calendar({ renderEntry, renderLabel, ...props }: CalendarProps) {
   return (
-    <Grid cols={7} rows={24} renderCell={(i, j) => {
-      return (
-        <Cell>
-          { props.renderEntry(i, j)}
-        </Cell>
-      )
-    }} />
+    <Grid {...props} cols={7} rows={24} renderCell={(i, j) => (
+      <Cell>
+        { j === 0 && <Label>{renderLabel(i)}</Label>}
+        { renderEntry(i, j)}
+      </Cell>
+    )} />
   )
-}
+})`
+
+`

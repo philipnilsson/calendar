@@ -6,8 +6,5 @@ export const CalendarHeader = styled.div`
   align-items: center;
   background: white;
   height: 4rem;
-  border-left: 1px solid;
-  border-bottom: 1px solid;
-  border-color: #e2e1df;
-  
+  overflow: hidden;
 `

@@ -13,7 +13,7 @@ const StyledGrid = styled.div<{ cols: number } >`
   grid-template-columns: repeat(${props => props.cols}, 1fr);
 `
 
-const GridCell = styled.div`
+export const GridCell = styled.div`
   width: 100%;
   height: 100%;
   background: white;
