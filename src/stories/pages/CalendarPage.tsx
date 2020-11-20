@@ -1,48 +1,34 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Card } from "../atoms/layout/Card";
 import { GridCell, Grid } from "../atoms/layout/Grid";
 import { H1 } from "../atoms/typography/H1";
-import { H3 } from "../atoms/typography/H3";
-import { testMenu, testRenderCalendarLabel, testRenderCalHeader, testRenderEntry } from "../helpers";
 import { Calendar } from "../molecules/Calendar";
-import { MenuItem } from "../molecules/MenuItem";
-
-const Sidebar = styled(function Menu({ items, ...rest }: { items: typeof testMenu }) {
-  return (
-    <div {...rest}>
-      <H3>Calendars</H3>
-      <nav>
-        <ul>
-          {items.map(props => <MenuItem key={props.title} {...props} />)}
-        </ul>
-      </nav>
-    </div>
-  )
-})`
-  ul { 
-    margin: 0;
-    margin-left: -.75em;
-    padding: 0;
-  }
-`
+import { MenuItems, SidebarMenu } from '../organism/SidebarMenu';
 
 const GridHeader = styled(Grid)``
 
-export const CalendarPage = styled(function(props) {
+type CalendarPageProps = {
+  items: MenuItems,
+  renderCalendarLabel: (i: number) => ReactNode,
+  renderCalendarHeader: (i: number) => ReactNode,
+  renderCalendarEntry: (i: number, j: number) => ReactNode,
+}
+
+export const CalendarPage = styled(function(props: CalendarPageProps) {
   return (
     <div {...props}>
       <H1>May, 2020</H1>
-      <Sidebar items={testMenu} />
+      <SidebarMenu items={props.items} />
       <Card>
         <GridHeader
           rows={1}
           cols={7}
-          renderCell={(_, j) => testRenderCalHeader(j)}
+          renderCell={(_, j) => props.renderCalendarHeader(j)}
         />
         <Calendar
-          renderEntry={testRenderEntry}
-          renderLabel={testRenderCalendarLabel}
+          renderEntry={props.renderCalendarEntry}
+          renderLabel={props.renderCalendarLabel}
         />
       </Card>
     </div>
@@ -66,7 +52,7 @@ export const CalendarPage = styled(function(props) {
     padding: 1.5rem 1.5rem;
   }
   
-  ${Sidebar} {
+  ${SidebarMenu} {
     grid-area: sidebar;
     padding: 1.5rem 0 1.5rem 1.5rem;
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { CalendarHeader } from './CalendarHeader';
 import styled from 'styled-components';
-import { testRenderCalHeader } from '../helpers';
+import { testRenderCalendarHeader } from '../helpers';
 
 export default {
   title: 'Molecules/Calendar/CalendarHeader',
@@ -17,13 +17,13 @@ const Wrapper = styled.div`
 const Template: Story<{}> =
   () => (
     <Wrapper>
-      {testRenderCalHeader(0)}
-      {testRenderCalHeader(1)}
-      {testRenderCalHeader(2)}
-      {testRenderCalHeader(3)}
-      {testRenderCalHeader(4)}
-      {testRenderCalHeader(5)}
-      {testRenderCalHeader(6)}
+      {testRenderCalendarHeader(0)}
+      {testRenderCalendarHeader(1)}
+      {testRenderCalendarHeader(2)}
+      {testRenderCalendarHeader(3)}
+      {testRenderCalendarHeader(4)}
+      {testRenderCalendarHeader(5)}
+      {testRenderCalendarHeader(6)}
     </Wrapper>
   );
 

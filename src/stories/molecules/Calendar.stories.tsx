@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { Calendar, CalendarProps } from './Calendar';
-import { testRenderCalendarLabel, testRenderEntry } from '../helpers';
+import { testRenderCalendarLabel, testRenderCalendarEntry } from '../helpers';
 
 export default {
   title: 'Molecules/Calendar/Calendar',
@@ -17,5 +17,5 @@ export const calendar = Template.bind({});
 
 calendar.args = {
   renderLabel: testRenderCalendarLabel,
-  renderEntry: testRenderEntry
+  renderEntry: testRenderCalendarEntry
 }
