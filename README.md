@@ -22,33 +22,48 @@ Click the "log in" button in the app header to log into your calendar.
 
 # Additional features
 
-## Atomic design system in storybook
+### Atomic design system in storybook
 
 `yarn run storybook` to start
 
-## Weekly navigation
+### Week navigation
 
-Navigate between weeks in the calendar.
+Navigate between weeks in the calendar. Wasn't almost no extra work.
 
-## Scrolling
+### Scrolling
 
 The app finds and scrolls to events in the calendar.
 
-## Light / dark themes
+### Light / dark themes
 
 Toggle in the UI
 
-# State management
+# Architecture
 
-Using mobx. The MobX calsses most interesting w.r.t. test coverage.
+### File strucutre
 
-There should be more tests :) No time!
+* `/stories` 
+   
+    Contains presentational components organized according to atomic design patterns
 
-# Limitations due to time
+* `/calendar`
+ 
+    A vertical slice for the calendar page.
 
- * Loading / error states
+### State management
 
- * Responsive design
+Standard MobX. Helps with quicker prototyping compared to Redux.
+
+### Styling
+
+Styled components. Nothing unusual. TypeScript support for themes is
+set up.
+
+# Current limitations
+
+ * No loading or error states
+
+ * Not responsive design
 
  * No mocking out of the API and testing the main App component.
  
