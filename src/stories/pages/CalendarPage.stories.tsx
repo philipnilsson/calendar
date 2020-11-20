@@ -3,7 +3,6 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { CalendarPage } from './CalendarPage';
 import { testMenu, testRenderCalendarLabel, testRenderCalendarHeader, testRenderCalendarEntry } from "../helpers";
 
-
 export default {
   title: 'Pages/Calendar/Main',
   component: CalendarPage

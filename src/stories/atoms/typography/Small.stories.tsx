@@ -10,8 +10,8 @@ export default {
 const Template: Story<{}> =
   (args) => <Small {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const small = Template.bind({});
+small.args = {
   children: <div>
     <b>Project planning</b>
     <div>9 — 10am</div>

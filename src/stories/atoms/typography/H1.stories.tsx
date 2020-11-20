@@ -10,7 +10,7 @@ export default {
 const Template: Story<{}> =
   (args) => <H1 {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const h1 = Template.bind({});
+h1.args = {
   children: 'May, 2020'
 }

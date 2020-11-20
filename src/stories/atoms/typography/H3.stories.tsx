@@ -10,7 +10,7 @@ export default {
 const Template: Story<{}> =
   (args) => <H3 {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const h3 = Template.bind({});
+h3.args = {
   children: 'Calendars'
 }

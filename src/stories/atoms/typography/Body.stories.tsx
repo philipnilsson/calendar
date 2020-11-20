@@ -10,7 +10,7 @@ export default {
 const Template: Story<{}> =
   (args) => <Body {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const body = Template.bind({});
+body.args = {
   children: 'Work'
 }

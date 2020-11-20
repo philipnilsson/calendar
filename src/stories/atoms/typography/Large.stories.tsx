@@ -10,7 +10,7 @@ export default {
 const Template: Story<{}> =
   (args) => <Large {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const large = Template.bind({});
+large.args = {
   children: 'Large text'
 }
