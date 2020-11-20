@@ -17,7 +17,7 @@ export const dark: ThemeType = {
     red: 'purple',
     blue: 'orange',
     green: 'brown',
-    dark: '#ffb767',
+    dark: '#eac59c',
     medium: '#c8bfad',
     sand: 'black',
     border: '#333230',
