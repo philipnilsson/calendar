@@ -12,7 +12,7 @@ export default {
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  background: white;
+  background: ${props => props.theme.white};
   height: 10rem;
   width: 10rem;
 `

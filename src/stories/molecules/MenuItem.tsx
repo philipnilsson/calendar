@@ -1,12 +1,13 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { ThemeType } from '../../theme/theme'
 import { Body } from '../atoms/typography/Body'
 import { Bullet } from '../atoms/typography/Bullet'
 
 export type MenuItemProps = {
   active?: boolean,
   title: string,
-  color: string
+  color: keyof ThemeType
 }
 
 export const MenuItem = styled(function MenuItem({ active, color, title, ...props }) {
@@ -22,14 +23,15 @@ export const MenuItem = styled(function MenuItem({ active, color, title, ...prop
   padding: 0.5em 1em;
   border-radius: .35rem;
   margin: 0.25em 0;
+  color: ${props => props.theme.menu};
   &: hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: ${props => props.theme.hover};
     box-shadow: 
       0px 2px 1px rgba(0, 0, 0, .1),
       1px 0 1px rgba(0, 0, 0, .03);
   }
   ${props => props.active && css`
-    background: white;
+    background: ${props => props.theme.hover};
     box-shadow: 
       0px 2px 1px rgba(0, 0, 0, .1),
       1px 0 1px rgba(0, 0, 0, .03);

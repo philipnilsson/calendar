@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { dark, light } from './theme/theme';
+import { observer } from 'mobx-react-lite';
+import { calendarApp } from './calendar';
 
 const Globals = createGlobalStyle`
   html {
@@ -18,10 +21,18 @@ const Globals = createGlobalStyle`
   }
 `
 
+const WithTheme = observer(({ children }) => (
+  <ThemeProvider theme={calendarApp.isDarkMode ? dark : light}>
+    {children}
+  </ThemeProvider>
+))
+
 ReactDOM.render(
   <React.StrictMode>
-    <Globals />
-    <App />
+    <WithTheme>
+      <Globals />
+      <App />
+    </WithTheme>
   </React.StrictMode>,
   document.getElementById('root')
 );

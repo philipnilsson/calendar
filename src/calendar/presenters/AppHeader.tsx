@@ -10,10 +10,10 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   ${Body} {
-    color: #222;
+    color: ${props => props.theme.dark};
     margin-right: 1em;
     &:hover {
-      color: teal;
+      color: ${props => props.theme.green};
     }
   }
 `
@@ -25,8 +25,15 @@ export const AppHeader = observer(() => {
       <div>
         {calendarApp.isLoggedIn === true && <Body as="a" href="#" onClick={calendarApp.logOut}>Log out</Body>}
         {calendarApp.isLoggedIn === false && <Body as="a" href="#" onClick={calendarApp.logIn}>Log in</Body>}
-        <Body as="a" href="#" onClick={calendarApp.previousWeek}>Prev week</Body>
-        <Body as="a" href="#" onClick={calendarApp.nextWeek}>Next week</Body>
+        <Body as="a" href="#" onClick={calendarApp.toggleDarkMode}>
+          Toggle theme
+        </Body>
+        <Body as="a" href="#" onClick={calendarApp.previousWeek}>
+          Previous week
+        </Body>
+        <Body as="a" href="#" onClick={calendarApp.nextWeek}>
+          Next week
+        </Body>
       </div>
     </Header>
   )

@@ -9,7 +9,7 @@ export type GridProps = {
 
 const StyledGrid = styled.div<{ cols: number } >`
   display: grid;
-  background: white;
+  background: ${props => props.theme.white};
   grid-template-columns: repeat(${props => props.cols}, 1fr);
 `
 
@@ -19,7 +19,7 @@ export const GridCell = styled.div`
   min-width: 0;
   border-left: 1px solid;
   border-bottom: 1px solid;
-  border-color: #e2e1df;
+  border-color: ${props => props.theme.border};
 `
 
 export const Grid = styled(

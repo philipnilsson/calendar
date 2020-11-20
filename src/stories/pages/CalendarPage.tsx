@@ -45,7 +45,7 @@ export const CalendarPage = styled(function({
 })`
   width: 100vw;
   height: 100vh;
-  background: #f5f4f0;
+  background: ${props => props.theme.sand};
   
   display: grid;
   grid-template-areas: 
@@ -57,7 +57,7 @@ export const CalendarPage = styled(function({
   ${PageHeader} {
     grid-area: header;
     border-bottom: 1px solid;
-    border-color: #e2e1df;
+    border-color: ${props => props.theme.border};
     padding: 1.5rem 1.5rem;
   }
   
@@ -68,7 +68,7 @@ export const CalendarPage = styled(function({
   
   ${Card} {
     grid-area: main;
-    background: white;
+    background: ${props => props.theme.white};
     margin: 1em;
   }
   
@@ -77,7 +77,7 @@ export const CalendarPage = styled(function({
   }
   
   ${GridHeader} {
-    border-bottom: 1px solid #e2e1df;
+    border-bottom: 1px solid ${props => props.theme.border};
     ${GridCell} {
       border-bottom: none;
     }

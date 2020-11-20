@@ -7,6 +7,7 @@ import { addDays, startOfDay } from 'date-fns';
 
 class CalendarApp {
     isLoggedIn: boolean | undefined = undefined
+    isDarkMode: boolean = false
 
     constructor(
         public date: Date = new Date(),
@@ -57,6 +58,10 @@ class CalendarApp {
         logOut()
         this.isLoggedIn = false
         this.calendars = []
+    }
+
+    toggleDarkMode = () => {
+        this.isDarkMode = !this.isDarkMode
     }
 
     nextWeek = () => {
