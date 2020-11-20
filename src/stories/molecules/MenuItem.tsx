@@ -17,10 +17,17 @@ export const MenuItem = styled(function MenuItem({ active, color, title, ...prop
     </li>
   )
 })`
+  cursor: pointer;
   list-style: none;
   padding: 0.5em 1em;
   border-radius: .35rem;
   margin: 0.25em 0;
+  &: hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+      0px 2px 1px rgba(0, 0, 0, .1),
+      1px 0 1px rgba(0, 0, 0, .03);
+  }
   ${props => props.active && css`
     background: white;
     box-shadow: 
