@@ -28,7 +28,7 @@ Click the "log in" button in the app header to log into your calendar.
 
 ### Week navigation
 
-Navigate between weeks in the calendar. Wasn't almost no extra work.
+Navigate between weeks in the calendar.
 
 ### Scrolling
 
@@ -36,7 +36,8 @@ The app finds and scrolls to events in the calendar.
 
 ### Light / dark themes
 
-Toggle in the UI
+Toggle in the UI. Mostly for fun, and because it's a good sanity check for 
+well structured styling. The dark theme is not a serious design attempt :)
 
 # Architecture
 
@@ -61,7 +62,7 @@ Toggle in the UI
 ### Language
 
 I always use TypeScript unless there's a specific
-reason. Productivity++.
+reason. Just more productive with types.
 
 ### State management
 
@@ -80,6 +81,8 @@ set up, so everything type safe.
 
 # Current limitations
 
+ * Not pixel perfect. Can spend more time here if desired.
+ 
  * Will add a couple of tests before calling it done
  
  * No loading or error states
