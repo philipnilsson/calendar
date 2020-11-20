@@ -15,20 +15,26 @@ type CalendarPageProps = {
   renderCalendarEntry: (i: number, j: number) => ReactNode,
 }
 
-export const CalendarPage = styled(function(props: CalendarPageProps) {
+export const CalendarPage = styled(function({
+  items,
+  renderCalendarEntry,
+  renderCalendarHeader,
+  renderCalendarLabel,
+  ...props
+}: CalendarPageProps) {
   return (
     <div {...props}>
       <H1>May, 2020</H1>
-      <SidebarMenu items={props.items} />
+      <SidebarMenu items={items} />
       <Card>
         <GridHeader
           rows={1}
           cols={7}
-          renderCell={(_, j) => props.renderCalendarHeader(j)}
+          renderCell={(_, j) => renderCalendarHeader(j)}
         />
         <Calendar
-          renderEntry={props.renderCalendarEntry}
-          renderLabel={props.renderCalendarLabel}
+          renderEntry={renderCalendarEntry}
+          renderLabel={renderCalendarLabel}
         />
       </Card>
     </div>
