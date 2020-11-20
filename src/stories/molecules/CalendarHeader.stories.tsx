@@ -1,10 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { CalendarHeader } from './CalendarHeader';
-import { Circled } from '../atoms/typography/Circled';
-import { Large } from '../atoms/typography/Large';
-import { Body } from '../atoms/typography/Body';
 import styled from 'styled-components';
+import { testRenderCalHeader } from '../helpers';
 
 export default {
   title: 'Molecules/Calendar/CalendarHeader',
@@ -13,28 +11,19 @@ export default {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 200px);
 `
 
 const Template: Story<{}> =
-  (args) => (
+  () => (
     <Wrapper>
-      <CalendarHeader {...args} style={{ gap: '0.5em' }}>
-        <Circled><Large>6</Large></Circled>
-        <Body>Sunday</Body>
-      </CalendarHeader>
-      <CalendarHeader {...args} style={{ gap: '0.5em' }}>
-        <Circled active><Large>7</Large></Circled>
-        <Body>Monday</Body>
-      </CalendarHeader>
-      <CalendarHeader {...args} style={{ gap: '0.5em' }}>
-        <Circled><Large>8</Large></Circled>
-        <Body>Tuesday</Body>
-      </CalendarHeader>
-      <CalendarHeader {...args} style={{ gap: '0.5em' }}>
-        <Circled><Large>9</Large></Circled>
-        <Body>Wednesday</Body>
-      </CalendarHeader>
+      {testRenderCalHeader(0)}
+      {testRenderCalHeader(1)}
+      {testRenderCalHeader(2)}
+      {testRenderCalHeader(3)}
+      {testRenderCalHeader(4)}
+      {testRenderCalHeader(5)}
+      {testRenderCalHeader(6)}
     </Wrapper>
   );
 
