@@ -44,7 +44,7 @@ Toggle in the UI
 
 * `/stories` 
    
-    Contains presentational components organized according to atomic design patterns
+    Contains presentational components organized according to the atomic design principles
 
 * `/calendar`
  
