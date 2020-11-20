@@ -1,10 +1,7 @@
-import { date } from "bueno/dist/cjs/schema/date";
-import { format } from "date-fns";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Card } from "../atoms/layout/Card";
 import { GridCell, Grid } from "../atoms/layout/Grid";
-import { H1 } from "../atoms/typography/H1";
 import { Calendar } from "../molecules/Calendar";
 import { MenuItems, SidebarMenu } from '../organism/SidebarMenu';
 

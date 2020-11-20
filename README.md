@@ -12,12 +12,13 @@ REACT_APP_API_KEY=<KEY>
  * `REACT_APP_CLIENT_ID` your  google calendar client id.
  * `REACT_APP_API_KEY` your api key for google calendar.
 
-Then run
+Then run...
 
 ### `yarn start`
 
-Run the app in a local environment
+...to run the app on localhost.
 
+Click the "log in" button in the app header to log into your calendar.
 
 # Additional features
 
@@ -37,15 +38,18 @@ The app finds and scrolls to events in the calendar.
 
 Toggle in the UI
 
-
 # State management
 
-Using mobx. This is mostly what's interesting re: test coverage.
+Using mobx. The MobX calsses most interesting w.r.t. test coverage.
 
-There should be more tests :) Running out of time.
+There should be more tests :) No time!
 
 # Limitations due to time
 
  * Loading / error states
 
  * Responsive design
+
+ * No mocking out of the API and testing the main App component.
+ 
+ * No Prettier / commit hooks etc

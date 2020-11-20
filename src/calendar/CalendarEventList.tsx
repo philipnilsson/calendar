@@ -1,4 +1,4 @@
-import { isBefore, addDays, isSameDay, isAfter, startOfSecond, isEqual } from "date-fns";
+import { isBefore, addDays, isSameDay, isAfter, isEqual } from "date-fns";
 import { CalendarEvent } from "./CalendarEvent";
 
 export class CalendarEventList {

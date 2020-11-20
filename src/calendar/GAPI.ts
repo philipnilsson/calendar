@@ -1,14 +1,14 @@
-import memoizee from "memoizee";
-import { Calendar } from "./Calendar";
-import { CalendarEvent } from "./CalendarEvent";
+import memoizee from "memoizee"
+import { Calendar } from "./Calendar"
+import { CalendarEvent } from "./CalendarEvent"
 
 declare var gapi: any
 
 const DISCOVERY_DOCS =
-    ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+    ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
 
 const SCOPES =
-    'https://www.googleapis.com/auth/calendar.readonly';
+    'https://www.googleapis.com/auth/calendar.readonly'
 
 export const calendarAPI = new Promise<any>((resolve, reject) => {
     document.getElementById('gapi')!.onload = function() {
@@ -24,6 +24,21 @@ export const calendarAPI = new Promise<any>((resolve, reject) => {
         })
     }
 })
+
+export async function isLoggedIn() {
+    return (await calendarAPI).auth2.getAuthInstance().isSignedIn.get()
+}
+
+export async function logOut() {
+    (await calendarAPI).auth2.getAuthInstance().signOut()
+}
+
+export async function logIn() {
+    (await calendarAPI).auth2.getAuthInstance().signIn()
+    return new Promise(resolve => {
+        gapi.auth2.getAuthInstance().isSignedIn.listen(resolve)
+    })
+}
 
 export const getEvents = memoizee(async (calendarId: string, dateFrom: string, dateTo: string): Promise<CalendarEvent[]> => {
     const api = await calendarAPI
