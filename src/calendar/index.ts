@@ -41,7 +41,7 @@ class CalendarApp {
         })
     }
 
-    renderLabelAMPM = (hour: number): string => {
+    showHourAMPM = (hour: number): string => {
         if (hour >= 12) {
             return `${hour - 12 + 1} PM`
         }

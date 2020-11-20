@@ -62,7 +62,7 @@ const App = observer(function App() {
         }}
 
         renderCalendarLabel={hour => {
-          return <Tiny>{calendarApp.renderLabelAMPM(hour)}</Tiny>
+          return <Tiny>{calendarApp.showHourAMPM(hour)}</Tiny>
         }}
 
         renderCalendarHeader={offset => {
