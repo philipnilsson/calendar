@@ -8,11 +8,12 @@ import { H1 } from "../atoms/typography/H1";
 import { Calendar } from "../molecules/Calendar";
 import { MenuItems, SidebarMenu } from '../organism/SidebarMenu';
 
+const PageHeader = styled.div``
 const GridHeader = styled(Grid)``
 
 type CalendarPageProps = {
   items: MenuItems,
-  date: string,
+  header: ReactNode,
   renderCalendarLabel: (i: number) => ReactNode,
   renderCalendarHeader: (i: number) => ReactNode,
   renderCalendarEntry: (i: number, j: number) => ReactNode,
@@ -20,7 +21,7 @@ type CalendarPageProps = {
 
 export const CalendarPage = styled(function({
   items,
-  date,
+  header,
   renderCalendarEntry,
   renderCalendarHeader,
   renderCalendarLabel,
@@ -28,9 +29,7 @@ export const CalendarPage = styled(function({
 }: CalendarPageProps) {
   return (
     <div {...props}>
-      <H1>
-        {date}
-      </H1>
+      <PageHeader>{header}</PageHeader>
       <SidebarMenu items={items} />
       <Card>
         <GridHeader
@@ -58,7 +57,7 @@ export const CalendarPage = styled(function({
   grid-template-columns: 14rem 1fr;
   grid-template-rows: auto 1fr;
   
-  ${H1} {
+  ${PageHeader} {
     grid-area: header;
     border-bottom: 1px solid;
     border-color: #e2e1df;

@@ -10,7 +10,7 @@ import { CalendarHeader } from './stories/molecules/CalendarHeader';
 import { Body } from './stories/atoms/typography/Body';
 import { Circled } from './stories/atoms/typography/Circled';
 import { Large } from './stories/atoms/typography/Large';
-import { CalendarEvent } from './calendar/CalendarEvent';
+import { AppHeader } from './AppHeader';
 
 const App = observer(function App() {
   calendarApp.events.case({
@@ -38,7 +38,8 @@ const App = observer(function App() {
   return (
     <div>
       <CalendarPage
-        date={format(calendarApp.date, 'MMM, yyyy')}
+
+        header={<AppHeader />}
 
         items={calendarApp.calendars.map(c => ({ ...c, onClick: c.toggleActive }))}
 

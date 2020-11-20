@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { CalendarPage } from './CalendarPage';
 import { testMenu, testRenderCalendarLabel, testRenderCalendarHeader, testRenderCalendarEntry } from "../helpers";
+import { H1 } from '../atoms/typography/H1';
 
 export default {
   title: 'Pages/Calendar/Main',
@@ -12,7 +13,7 @@ const Template: Story<{}> =
   (args) => (
     <CalendarPage
       items={testMenu}
-      date="Nov 2020"
+      header={<H1>Nov 2020</H1>}
       renderCalendarEntry={testRenderCalendarEntry}
       renderCalendarLabel={testRenderCalendarLabel}
       renderCalendarHeader={testRenderCalendarHeader}

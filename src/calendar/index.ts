@@ -48,12 +48,12 @@ class CalendarApp {
         return `${hour + 1} AM`
     }
 
-    nextWeek() {
+    nextWeek = () => {
         this.date =
             addDays(this.date, 7)
     }
 
-    previousWeek() {
+    previousWeek = () => {
         this.date =
             addDays(this.date, -7)
     }
