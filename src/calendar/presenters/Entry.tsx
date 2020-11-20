@@ -19,9 +19,6 @@ export const Entry = observer(function Entry({ hour, offset }: { hour: number, o
   const color =
     calendarApp.calendars.find(c => c.id === event.calendarID)?.color ?? 'green'
 
-  console.log('wat', calendarApp.calendars.map(c => c.id))
-  console.log('>>>', event.calendarID)
-
   return (
     <CalendarEntry offset={event.startOffset} height={event.length} color={color}>
       <Small>
