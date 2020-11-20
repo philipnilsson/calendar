@@ -23,10 +23,11 @@ const App = observer(function App() {
     const cal =
       document.getElementById('calendar')!
 
-    cal!.scrollTo(
-      0,
-      cal.scrollHeight * (event.startHour / 24) - 70
-    )
+    cal!.scrollTo({
+      left: 0,
+      top: cal.scrollHeight * (event.startHour / 24) - 70,
+      behavior: 'smooth'
+    })
 
   }, [calendarApp.calendarEvents, calendarApp.date])
 
