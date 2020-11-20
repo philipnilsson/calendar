@@ -2,7 +2,7 @@ import { flow, makeAutoObservable } from 'mobx'
 import { fromPromise } from "mobx-utils";
 import { CalendarEventList } from './models/CalendarEventList';
 import { Calendar } from './models/Calendar';
-import { getEvents, loadCalendars, logIn, logOut, isLoggedIn } from './services/GAPI';
+import { getEvents, loadCalendars, logIn, logOut, isLoggedIn } from './services/GAPI'
 import { addDays, startOfDay } from 'date-fns';
 
 class CalendarApp {
@@ -18,8 +18,8 @@ class CalendarApp {
     }
 
     @flow * init() {
-        if (yield isLoggedIn()) {
-            this.isLoggedIn = true
+        this.isLoggedIn = yield isLoggedIn()
+        if (this.isLoggedIn) {
             this.calendars = yield loadCalendars()
         }
     }
