@@ -84,5 +84,10 @@ export const CalendarPage = styled(function({
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { 
+      display: none;
+    }  
   }
 `

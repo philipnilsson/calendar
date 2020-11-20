@@ -18,12 +18,12 @@ const Globals = createGlobalStyle`
   }
 `
 
-function App() {
+function App({ calendars }: any) {
   return (
     <div>
       <Globals />
       <CalendarPage
-        items={testMenu}
+        items={calendars}
         renderCalendarEntry={testRenderCalendarEntry}
         renderCalendarLabel={testRenderCalendarLabel}
         renderCalendarHeader={testRenderCalendarHeader}
