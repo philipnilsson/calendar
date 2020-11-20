@@ -1,12 +1,15 @@
 import React from 'react';
 import { CalendarPage } from './stories/pages/CalendarPage';
-import { testRenderCalendarHeader } from './stories/helpers';
 import { CalendarEntry } from './stories/molecules/CalendarEntry';
 import { calendarApp } from './calendar'
-import { addDays } from 'date-fns';
+import { addDays, format, getDate } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import { Small } from './stories/atoms/typography/Small';
 import { Tiny } from './stories/atoms/typography/Tiny';
+import { CalendarHeader } from './stories/molecules/CalendarHeader';
+import { Body } from './stories/atoms/typography/Body';
+import { Circled } from './stories/atoms/typography/Circled';
+import { Large } from './stories/atoms/typography/Large';
 
 const App = observer(function App() {
   calendarApp.events.case({
@@ -34,11 +37,21 @@ const App = observer(function App() {
           }
         }}
 
-        renderCalendarLabel={(hour) => {
+        renderCalendarLabel={hour => {
           return <Tiny>{calendarApp.renderLabelAMPM(hour)}</Tiny>
         }}
 
-        renderCalendarHeader={testRenderCalendarHeader}
+        renderCalendarHeader={offset => {
+          const date = addDays(calendarApp.date, offset)
+          return (
+            <CalendarHeader style={{ gap: '0.5em' }}>
+              <Circled active={offset === 0}>
+                <Large>{getDate(date)}</Large>
+              </Circled>
+              <Body>{format(date, 'EEEE')}</Body>
+            </CalendarHeader>
+          )
+        }}
       />
     </div>
   );
