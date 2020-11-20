@@ -16,6 +16,7 @@ const StyledGrid = styled.div<{ cols: number } >`
 export const GridCell = styled.div`
   width: 100%;
   height: 100%;
+  min-width: 0;
   border-left: 1px solid #e2e1df;
   border-bottom: 1px solid #e2e1df;
 `

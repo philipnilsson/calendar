@@ -88,6 +88,7 @@ export const CalendarPage = styled(function(props) {
   
   ${Calendar} {
     height: 100%;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 `
