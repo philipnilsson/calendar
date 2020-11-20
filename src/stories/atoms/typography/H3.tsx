@@ -7,8 +7,8 @@ export const H3 = styled.h3`
   line-height: 1;
   font-family: Roboto, sans-serif;
   text-transform: uppercase;
-  font-size: 75%;
+  font-size: 70%;
   font-weight: 600;
   color: ${medium};
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 `
