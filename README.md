@@ -72,6 +72,12 @@ Standard MobX. Helps with quicker prototyping compared to Redux.
 Styled components. Nothing unusual. TypeScript support for themes is
 set up, so everything type safe.
 
+### Other dependencies
+
+ - mobx-utils. Utilities for MobX. Used for "observable" promises.
+ - memoizee: Memoizing API calls
+ - date-fns: Functional date library
+
 # Current limitations
 
  * Will add a couple of tests before calling it done
