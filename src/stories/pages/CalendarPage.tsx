@@ -1,3 +1,5 @@
+import { date } from "bueno/dist/cjs/schema/date";
+import { format } from "date-fns";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { Card } from "../atoms/layout/Card";
@@ -10,6 +12,7 @@ const GridHeader = styled(Grid)``
 
 type CalendarPageProps = {
   items: MenuItems,
+  date: string,
   renderCalendarLabel: (i: number) => ReactNode,
   renderCalendarHeader: (i: number) => ReactNode,
   renderCalendarEntry: (i: number, j: number) => ReactNode,
@@ -17,6 +20,7 @@ type CalendarPageProps = {
 
 export const CalendarPage = styled(function({
   items,
+  date,
   renderCalendarEntry,
   renderCalendarHeader,
   renderCalendarLabel,
@@ -24,7 +28,9 @@ export const CalendarPage = styled(function({
 }: CalendarPageProps) {
   return (
     <div {...props}>
-      <H1>May, 2020</H1>
+      <H1>
+        {date}
+      </H1>
       <SidebarMenu items={items} />
       <Card>
         <GridHeader

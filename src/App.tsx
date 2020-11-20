@@ -38,7 +38,10 @@ const App = observer(function App() {
   return (
     <div>
       <CalendarPage
+        date={format(calendarApp.date, 'MMM, yyyy')}
+
         items={calendarApp.calendars.map(c => ({ ...c, onClick: c.toggleActive }))}
+
         renderCalendarEntry={(hour, day_offset) => {
 
           const date =

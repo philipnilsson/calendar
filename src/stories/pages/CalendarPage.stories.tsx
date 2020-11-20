@@ -12,6 +12,7 @@ const Template: Story<{}> =
   (args) => (
     <CalendarPage
       items={testMenu}
+      date="Nov 2020"
       renderCalendarEntry={testRenderCalendarEntry}
       renderCalendarLabel={testRenderCalendarLabel}
       renderCalendarHeader={testRenderCalendarHeader}
