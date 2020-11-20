@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { dark, light } from './theme/theme';
+import { dark, light } from './stories/theme/theme';
 import { observer } from 'mobx-react-lite';
 import { calendarApp } from './calendar';
 

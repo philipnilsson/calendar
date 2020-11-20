@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { ThemeType } from '../../theme/theme'
+import { ThemeType } from '../../stories/theme/theme'
 import { Body } from '../atoms/typography/Body'
 import { Bullet } from '../atoms/typography/Bullet'
 

@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx"
-import { ThemeType } from "../theme/theme"
+import { ThemeType } from '../stories/theme/theme'
 
 const COLORS: (keyof ThemeType)[] =
   ['green', 'red', 'blue']

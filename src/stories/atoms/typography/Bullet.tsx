@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ThemeType } from '../../../theme/theme'
+import { ThemeType } from '../../../stories/theme/theme'
 
 export const Bullet = styled.span<{ color: keyof ThemeType }>`
   display: inline-block;
