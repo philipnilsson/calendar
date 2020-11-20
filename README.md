@@ -44,4 +44,8 @@ Using mobx. This is mostly what's interesting re: test coverage.
 
 There should be more tests :) Running out of time.
 
+# Limitations due to time
 
+ * Loading / error states
+
+ * Responsive design
