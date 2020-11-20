@@ -5,7 +5,7 @@ import { Grid } from '../atoms/layout/Grid'
 export type CalendarProps = {
   renderEntry: (i: number, j: number) => ReactNode,
   renderLabel: (j: number) => ReactNode,
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 const Cell = styled.div`
   position: relative;

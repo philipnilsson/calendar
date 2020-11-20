@@ -33,6 +33,7 @@ export const CalendarPage = styled(function({
           renderCell={(_, j) => renderCalendarHeader(j)}
         />
         <Calendar
+          id="calendar"
           renderEntry={renderCalendarEntry}
           renderLabel={renderCalendarLabel}
         />

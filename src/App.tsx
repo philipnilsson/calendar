@@ -10,11 +10,31 @@ import { CalendarHeader } from './stories/molecules/CalendarHeader';
 import { Body } from './stories/atoms/typography/Body';
 import { Circled } from './stories/atoms/typography/Circled';
 import { Large } from './stories/atoms/typography/Large';
+import { CalendarEvent } from './calendar/CalendarEvent';
 
 const App = observer(function App() {
   calendarApp.events.case({
     fulfilled: x => x
   })
+
+  React.useLayoutEffect(() => {
+    const event =
+      calendarApp.calendarEvents.earliestEvent(calendarApp.date)
+
+    if (!event) {
+      return
+    }
+
+    const cal =
+      document.getElementById('calendar')!
+
+    cal!.scrollTo(
+      0,
+      cal.scrollHeight * (event.startHour / 24) - 70
+    )
+
+  }, [calendarApp.calendarEvents, calendarApp.date])
+
   return (
     <div>
       <CalendarPage

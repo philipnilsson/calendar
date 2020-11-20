@@ -3,6 +3,7 @@ import { fromPromise } from "mobx-utils";
 import { CalendarEventList } from './CalendarEventList';
 import { Calendar } from './Calendar';
 import { getEvents, loadCalendars } from './GAPI';
+import { startOfDay } from 'date-fns';
 
 class CalendarApp {
     constructor(
@@ -45,5 +46,5 @@ class CalendarApp {
 }
 
 export const calendarApp =
-    new CalendarApp()
+    new CalendarApp(startOfDay(new Date()))
 

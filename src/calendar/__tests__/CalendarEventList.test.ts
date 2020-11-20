@@ -28,3 +28,20 @@ test('will not find event on the wrong day', () => {
 test('will not find event with the wrong time', () => {
     expect(eventList.findEvent(8, parseISO('2019-11-18'))).toBe(undefined)
 })
+
+test('can find relevant events', () => {
+    expect(eventList.earliestEvent(parseISO('2019-11-18'))).toEqual(calendarEvent1)
+})
+
+test('can find relevant events ignoring earlier events', () => {
+    expect(eventList.earliestEvent(parseISO('2019-11-19'))).toEqual(calendarEvent2)
+})
+
+test('wont find too early events', () => {
+    expect(eventList.earliestEvent(parseISO('2019-11-20'))).toEqual(undefined)
+})
+
+test('wont find too late events', () => {
+    expect(eventList.earliestEvent(parseISO('2019-11-10'))).toEqual(undefined)
+})
+

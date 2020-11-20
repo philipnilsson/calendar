@@ -1,4 +1,4 @@
-import { isSameDay } from "date-fns";
+import { isBefore, addDays, isSameDay, isAfter, startOfSecond, isEqual } from "date-fns";
 import { CalendarEvent } from "./CalendarEvent";
 
 export class CalendarEventList {
@@ -9,6 +9,19 @@ export class CalendarEventList {
 
   static EMPTY =
     new CalendarEventList([])
+
+  isWithinWeek(date: Date, dateToCompare: Date) {
+    const isAfterOrBefore =
+      isAfter(date, dateToCompare) || isEqual(date, dateToCompare)
+    return isAfterOrBefore && isBefore(date, addDays(dateToCompare, 6))
+  }
+
+  earliestEvent(startOfDay: Date): CalendarEvent | undefined {
+    const eventsInWeek = this.events
+      .filter(e => this.isWithinWeek(e.date, startOfDay))
+
+    return eventsInWeek.sort((e, f) => e.startHour - f.startHour)[0]
+  }
 
   findEvent(hour: number, day: Date) {
     return this.events.find((e: CalendarEvent) => {
