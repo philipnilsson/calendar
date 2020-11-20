@@ -1,12 +1,22 @@
-import { parseISO } from 'date-fns'
+import { endOfDay, parseISO } from 'date-fns'
 import { CalendarEvent } from '../CalendarEvent'
 import { CalendarEventList } from '../CalendarEventList'
 
-const calendarEvent1 =
-    new CalendarEvent(parseISO('2019-11-18'), 'E1', 'D1', 4, 0.25, 1.5)
+const calendarEvent1 = new CalendarEvent(
+    parseISO('2019-11-18T04:15:00'),
+    parseISO('2019-11-18T08:00:00'),
+    'calendar 1',
+    'E1',
+    'D1',
+)
 
-const calendarEvent2 =
-    new CalendarEvent(parseISO('2019-11-19'), 'E2', 'D1', 8, 0, 0.15)
+const calendarEvent2 = new CalendarEvent(
+    parseISO('2019-11-19T08:15:00'),
+    parseISO('2019-11-19T10:00:00'),
+    'calendar 1',
+    'E2',
+    'D1',
+)
 
 const eventList = new CalendarEventList([
     calendarEvent1,

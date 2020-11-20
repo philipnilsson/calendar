@@ -18,14 +18,14 @@ export class CalendarEventList {
 
   earliestEvent(startOfDay: Date): CalendarEvent | undefined {
     const eventsInWeek = this.events
-      .filter(e => this.isWithinWeek(e.date, startOfDay))
+      .filter(e => this.isWithinWeek(e.startDate, startOfDay))
 
     return eventsInWeek.sort((e, f) => e.startHour - f.startHour)[0]
   }
 
   findEvent(hour: number, day: Date) {
     return this.events.find((e: CalendarEvent) => {
-      return e.startHour === hour && isSameDay(day, e.date)
+      return e.startHour === hour && isSameDay(day, e.startDate)
     })
   }
 }

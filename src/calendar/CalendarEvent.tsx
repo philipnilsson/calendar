@@ -9,16 +9,31 @@ type GAPIEvent = {
 
 export class CalendarEvent {
   constructor(
-    public date: Date,
+    public startDate: Date,
     public endDate: Date,
     public calendarID: string,
     public title: string,
     public description: string,
-    public startHour: number,
-    public endHour: number,
-    public startOffset: number,
-    public length: number
+    public isAllDay: boolean = false
   ) {
+  }
+
+  get length() {
+    return this.isAllDay
+      ? 24
+      : differenceInMinutes(this.endDate, this.startDate) / 60
+  }
+
+  get startOffset() {
+    return getMinutes(this.startDate) / 60
+  }
+
+  get startHour() {
+    return getHours(this.startDate)
+  }
+
+  get endHour() {
+    return getHours(this.endDate)
   }
 
   formatHour(date: Date) {
@@ -30,10 +45,10 @@ export class CalendarEvent {
       (this.startHour < 12) === (this.endHour < 12)
 
     if (canAbbreviate) {
-      return `${format(this.date, 'h:mm')} — ${this.formatHour(this.endDate)}`
+      return `${format(this.startDate, 'h:mm')} — ${this.formatHour(this.endDate)}`
     }
 
-    return `${this.formatHour(this.date)} — ${this.formatHour(this.endDate)}`
+    return `${this.formatHour(this.startDate)} — ${this.formatHour(this.endDate)}`
   }
 
   static fromGAPI(result: GAPIEvent, calendarID?: string) {
@@ -48,33 +63,14 @@ export class CalendarEvent {
         ? parseISO(result.end.date)
         : parseISO(result.end.dateTime)
 
-    const startHour =
-      getHours(startDate)
-
-    const endHour =
-      getHours(endDate)
-
-    const offset =
-      getMinutes(startDate) / 60
-
-    // Assume we're seeing an all-day event if endHour has no time.
-    const length =
-      'date' in result.end
-        ? 24
-        : differenceInMinutes(endDate, startDate) / 60
-
-    console.log('12131231232131', calendarID)
-
     return new CalendarEvent(
       startDate,
       endDate,
       calendarID || '',
       result.summary,
       result.description,
-      startHour,
-      endHour,
-      offset,
-      length
+      // Assume we're seeing an all-day event if endHour has no time.
+      'date' in result.end
     )
   }
 }
