@@ -19,12 +19,7 @@ export const calendarAPI = new Promise<any>((resolve, reject) => {
                 discoveryDocs: DISCOVERY_DOCS,
                 scope: SCOPES
             }).then(() => {
-                if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
-                    gapi.auth2.getAuthInstance().signIn();
-                    gapi.auth2.getAuthInstance().isSignedIn.listen(() => resolve(gapi));
-                } else {
-                    resolve(gapi)
-                }
+                resolve(gapi)
             }, reject)
         })
     }
