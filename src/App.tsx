@@ -13,10 +13,6 @@ import { Large } from './stories/atoms/typography/Large';
 import { AppHeader } from './AppHeader';
 
 const App = observer(function App() {
-  calendarApp.events.case({
-    fulfilled: x => x
-  })
-
   React.useLayoutEffect(() => {
     const event =
       calendarApp.calendarEvents.earliestEvent(calendarApp.date)
