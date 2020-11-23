@@ -60,5 +60,5 @@ export const loadCalendars = memoizee(async (): Promise<Calendar[]> => {
         await calendarAPI
     const results =
         await api.client.calendar.calendarList.list()
-    return results.result.items.map(Calendar.fromGAPI)
+    return results.result.items.sort((x: any, y: any) => +!x.primary - +!y.primary).map(Calendar.fromGAPI)
 })
