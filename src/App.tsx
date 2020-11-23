@@ -1,7 +1,7 @@
 import React from 'react';
 import { CalendarPage } from './stories/pages/CalendarPage';
 import { calendarApp } from './calendar'
-import { addDays, addHours, format, getDate } from 'date-fns';
+import { addDays, addHours, format, getDate, isToday } from 'date-fns';
 import { observer } from 'mobx-react-lite';
 import { Tiny } from './stories/atoms/typography/Tiny';
 import { CalendarHeader } from './stories/molecules/CalendarHeader';
@@ -18,7 +18,7 @@ const Menu = observer(function Menu() {
   return <SidebarMenu items={items} />
 })
 
-const App = observer(function App() {
+const CalendarScroll = observer(function CalendarScroll() {
   React.useLayoutEffect(() => {
     const event =
       calendarApp.calendarEvents.earliestEvent(calendarApp.date)
@@ -38,36 +38,45 @@ const App = observer(function App() {
 
   }, [calendarApp.calendarEvents, calendarApp.date])
 
+  return null
+})
+
+const ConnectedCalendarHeader = observer(function ConnectedCalendarHeader({ offset }: { offset: number }) {
+  const date = addDays(calendarApp.date, offset)
+  return (
+    <CalendarHeader style={{ gap: '0.5em' }}>
+      <Circled active={isToday(date)}>
+        <Large>{getDate(date)}</Large>
+      </Circled>
+      <Body>{format(date, 'EEEE')}</Body>
+    </CalendarHeader>
+  )
+})
+
+const App = function App() {
   return (
     <div>
+      <CalendarScroll />
       <CalendarPage
 
         header={<AppHeader />}
 
-        renderMenu={() => <Menu />}
+        menu={<Menu />}
 
         renderCalendarEntry={(hour, offset) => {
           return <Entry hour={hour} offset={offset} />
         }}
 
         renderCalendarLabel={hour => {
-          return <Tiny>{format(addHours(calendarApp.date, hour + 1), 'h a')}</Tiny>
+          return <Tiny>{format(addHours(new Date(), hour + 1), 'h a')}</Tiny>
         }}
 
         renderCalendarHeader={offset => {
-          const date = addDays(calendarApp.date, offset)
-          return (
-            <CalendarHeader style={{ gap: '0.5em' }}>
-              <Circled active={offset === 0}>
-                <Large>{getDate(date)}</Large>
-              </Circled>
-              <Body>{format(date, 'EEEE')}</Body>
-            </CalendarHeader>
-          )
+          return <ConnectedCalendarHeader offset={offset} />
         }}
       />
     </div>
   );
-})
+}
 
 export default App;

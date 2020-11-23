@@ -9,7 +9,7 @@ const GridHeader = styled(Grid)``
 const Menu = styled.div``
 
 type CalendarPageProps = {
-  renderMenu: () => ReactNode,
+  menu: ReactNode,
   header: ReactNode,
   renderCalendarLabel: (i: number) => ReactNode,
   renderCalendarHeader: (i: number) => ReactNode,
@@ -17,7 +17,7 @@ type CalendarPageProps = {
 }
 
 export const CalendarPage = styled(function({
-  renderMenu,
+  menu,
   header,
   renderCalendarEntry,
   renderCalendarHeader,
@@ -27,7 +27,7 @@ export const CalendarPage = styled(function({
   return (
     <div {...props}>
       <PageHeader>{header}</PageHeader>
-      <Menu>{renderMenu()}</Menu>
+      <Menu>{menu}</Menu>
       <Card>
         <GridHeader
           rows={1}

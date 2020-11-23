@@ -13,7 +13,7 @@ export default {
 const Template: Story<{}> =
   (args) => (
     <CalendarPage
-      renderMenu={() => <SidebarMenu items={testMenu} />}
+      menu={<SidebarMenu items={testMenu} />}
       header={<H1>Nov 2020</H1>}
       renderCalendarEntry={testRenderCalendarEntry}
       renderCalendarLabel={testRenderCalendarLabel}

@@ -21,11 +21,13 @@ const Globals = createGlobalStyle`
   }
 `
 
-const WithTheme = observer(({ children }) => (
-  <ThemeProvider theme={calendarApp.isDarkMode ? dark : light}>
-    {children}
-  </ThemeProvider>
-))
+const WithTheme = observer(({ children }) => {
+  return (
+    <ThemeProvider theme={calendarApp.isDarkMode ? dark : light}>
+      {children}
+    </ThemeProvider>
+  )
+})
 
 ReactDOM.render(
   <React.StrictMode>
