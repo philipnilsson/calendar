@@ -13,7 +13,7 @@ export class CalendarEventList {
     isWithinWeek(date: Date, dateToCompare: Date) {
         const isAfterOrBefore =
             isAfter(date, dateToCompare) || isEqual(date, dateToCompare)
-        return isAfterOrBefore && isBefore(date, addDays(dateToCompare, 6))
+        return isAfterOrBefore && isBefore(date, addDays(dateToCompare, 7))
     }
 
     earliestEvent(startOfDay: Date): CalendarEvent | undefined {
