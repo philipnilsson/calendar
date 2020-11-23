@@ -8,7 +8,7 @@ export const CalendarScroll = observer(function CalendarScroll() {
     const event =
       calendarEvents.earliestEvent(date)
 
-    if (!event) {
+    if (!event || event.isAllDay) {
       return
     }
 
