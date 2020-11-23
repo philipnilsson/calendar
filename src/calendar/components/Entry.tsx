@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from "mobx-react-lite"
 import { addDays } from 'date-fns'
 import { CalendarEntry } from '../../stories/molecules/CalendarEntry'
-import { calendarApp } from '../models/CalendarPage'
+import { calendarPage } from '../models/CalendarPage'
 import { Small } from '../../stories/atoms/typography/Small'
 import { ThemeType } from '../../stories/theme/theme'
 
@@ -28,17 +28,17 @@ const EntryPresenter = React.memo(function({ height, offset, title, color, inter
 
 export const Entry = observer(function Entry({ hour, offset }: { hour: number, offset: number }) {
   const date =
-    addDays(calendarApp.date, offset)
+    addDays(calendarPage.date, offset)
 
   const event =
-    calendarApp.calendarEvents.findEvent(hour, date)
+    calendarPage.calendarEvents.findEvent(hour, date)
 
   if (!event) {
     return null
   }
 
   const color =
-    calendarApp.calendars.find(c => c.id === event.calendarID)?.color ?? 'green'
+    calendarPage.calendars.find(c => c.id === event.calendarID)?.color ?? 'green'
 
   return (
     <EntryPresenter

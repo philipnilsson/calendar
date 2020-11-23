@@ -1,7 +1,7 @@
 import { addDays, format, getDate, isToday } from "date-fns"
 import { observer } from "mobx-react-lite"
 import React from "react"
-import { calendarApp } from "../models/CalendarPage"
+import { calendarPage } from "../models/CalendarPage"
 import { Body } from "../../stories/atoms/typography/Body"
 import { Circled } from "../../stories/atoms/typography/Circled"
 import { Large } from "../../stories/atoms/typography/Large"
@@ -19,7 +19,7 @@ const CalendarHeaderPresenter = React.memo(function({ date }: { date: Date }) {
 })
 
 export const CalendarHeader = observer(function ConnectedCalendarHeader({ offset }: { offset: number }) {
-  const date = addDays(calendarApp.date, offset)
+  const date = addDays(calendarPage.date, offset)
   return (
     <CalendarHeaderPresenter date={date} />
   )

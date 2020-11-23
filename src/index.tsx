@@ -4,7 +4,7 @@ import App from './App';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { dark, light } from './stories/theme/theme';
 import { observer } from 'mobx-react-lite';
-import { calendarApp } from './calendar/models/CalendarPage';
+import { calendarPage } from './calendar/models/CalendarPage';
 
 const Globals = createGlobalStyle`
   html {
@@ -23,7 +23,7 @@ const Globals = createGlobalStyle`
 
 const WithTheme = observer(({ children }) => {
   return (
-    <ThemeProvider theme={calendarApp.isDarkMode ? dark : light}>
+    <ThemeProvider theme={calendarPage.isDarkMode ? dark : light}>
       {children}
     </ThemeProvider>
   )

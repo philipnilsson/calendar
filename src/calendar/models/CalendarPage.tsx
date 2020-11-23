@@ -5,7 +5,7 @@ import { Calendar } from './Calendar';
 import { getEvents, loadCalendars, logIn, logOut, isLoggedIn } from '../services/GAPI'
 import { addDays, startOfDay } from 'date-fns';
 
-class CalendarApp {
+class CalendarPage {
   isLoggedIn: boolean | undefined = undefined
   isDarkMode: boolean = false
 
@@ -73,6 +73,6 @@ class CalendarApp {
   }
 }
 
-export const calendarApp =
-  new CalendarApp(startOfDay(new Date()))
+export const calendarPage =
+  new CalendarPage(startOfDay(new Date()))
 
