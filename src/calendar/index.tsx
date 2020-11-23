@@ -1,12 +1,12 @@
-import React from 'react';
-import { CalendarPage } from '../stories/pages/CalendarPage';
-import { addHours, format } from 'date-fns';
-import { Tiny } from '../stories/atoms/typography/Tiny';
-import { AppHeader } from './containers/AppHeader';
-import { Entry } from './containers/Entry';
-import { CalendarScroll } from './containers/CalendarScroll';
-import { CalendarHeader } from './containers/CalendarHeader';
-import { Menu } from './containers/Menu';
+import React from 'react'
+import { CalendarPage } from '../stories/pages/CalendarPage'
+import { addHours, format } from 'date-fns'
+import { Tiny } from '../stories/atoms/typography/Tiny'
+import { CalendarScroll } from './components/CalendarScroll'
+import { AppHeader } from './components/AppHeader'
+import { Entry } from './components/Entry'
+import { Menu } from './components/Menu'
+import { CalendarHeader } from './components/CalendarHeader'
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         }}
       />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
