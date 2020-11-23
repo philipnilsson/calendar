@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { calendarApp } from '..'
+import { calendarApp } from '../models/CalendarPage'
 import { SidebarMenu } from '../../stories/organism/SidebarMenu'
 
 export const Menu = observer(function Menu() {

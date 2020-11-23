@@ -4,7 +4,7 @@ import App from './App';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { dark, light } from './stories/theme/theme';
 import { observer } from 'mobx-react-lite';
-import { calendarApp } from './calendar';
+import { calendarApp } from './calendar/models/CalendarPage';
 
 const Globals = createGlobalStyle`
   html {

@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import styled from 'styled-components'
-import { calendarApp } from '../../calendar'
+import { calendarApp } from '../models/CalendarPage'
 import { Body } from '../../stories/atoms/typography/Body'
 import { H1 } from '../../stories/atoms/typography/H1'
 

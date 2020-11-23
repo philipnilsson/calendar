@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from "mobx-react-lite"
 import { addDays } from 'date-fns'
 import { CalendarEntry } from '../../stories/molecules/CalendarEntry'
-import { calendarApp } from '..'
+import { calendarApp } from '../models/CalendarPage'
 import { Small } from '../../stories/atoms/typography/Small'
 
 export const Entry = observer(function Entry({ hour, offset }: { hour: number, offset: number }) {

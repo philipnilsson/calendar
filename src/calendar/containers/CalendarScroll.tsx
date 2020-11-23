@@ -1,6 +1,6 @@
-import { observer } from "mobx-react-lite"
-import React from "react"
-import { calendarApp } from ".."
+import { observer } from 'mobx-react-lite'
+import React from 'react'
+import { calendarApp } from '../models/CalendarPage'
 
 export const CalendarScroll = observer(function CalendarScroll() {
   const { calendarEvents, date } = calendarApp
