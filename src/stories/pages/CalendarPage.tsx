@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { Card } from "../atoms/layout/Card";
 import { GridCell, Grid } from "../atoms/layout/Grid";
 import { Calendar } from "../molecules/Calendar";
-import { MenuItems, SidebarMenu } from '../organism/SidebarMenu';
 
 const PageHeader = styled.div``
 const GridHeader = styled(Grid)``
+const Menu = styled.div``
 
 type CalendarPageProps = {
-  items: MenuItems,
+  renderMenu: () => ReactNode,
   header: ReactNode,
   renderCalendarLabel: (i: number) => ReactNode,
   renderCalendarHeader: (i: number) => ReactNode,
@@ -17,7 +17,7 @@ type CalendarPageProps = {
 }
 
 export const CalendarPage = styled(function({
-  items,
+  renderMenu,
   header,
   renderCalendarEntry,
   renderCalendarHeader,
@@ -27,7 +27,7 @@ export const CalendarPage = styled(function({
   return (
     <div {...props}>
       <PageHeader>{header}</PageHeader>
-      <SidebarMenu items={items} />
+      <Menu>{renderMenu()}</Menu>
       <Card>
         <GridHeader
           rows={1}
@@ -61,7 +61,7 @@ export const CalendarPage = styled(function({
     padding: 1.5rem 1.5rem;
   }
   
-  ${SidebarMenu} {
+  ${Menu} {
     grid-area: sidebar;
     padding: 1.5rem 0 1.5rem 1.5rem;
   }

@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { CalendarPage } from './CalendarPage';
 import { testMenu, testRenderCalendarLabel, testRenderCalendarHeader, testRenderCalendarEntry } from "../helpers";
 import { H1 } from '../atoms/typography/H1';
+import { SidebarMenu } from '../organism/SidebarMenu';
 
 export default {
   title: 'Pages/Calendar/Main',
@@ -12,7 +13,7 @@ export default {
 const Template: Story<{}> =
   (args) => (
     <CalendarPage
-      items={testMenu}
+      renderMenu={() => <SidebarMenu items={testMenu} />}
       header={<H1>Nov 2020</H1>}
       renderCalendarEntry={testRenderCalendarEntry}
       renderCalendarLabel={testRenderCalendarLabel}

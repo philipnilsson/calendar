@@ -10,6 +10,13 @@ import { Circled } from './stories/atoms/typography/Circled';
 import { Large } from './stories/atoms/typography/Large';
 import { AppHeader } from './calendar/presenters/AppHeader';
 import { Entry } from './calendar/presenters/Entry';
+import { SidebarMenu } from './stories/organism/SidebarMenu';
+
+const Menu = observer(function Menu() {
+  const items =
+    calendarApp.calendars.map(c => ({ ...c, onClick: c.toggleActive }))
+  return <SidebarMenu items={items} />
+})
 
 const App = observer(function App() {
   React.useLayoutEffect(() => {
@@ -37,9 +44,11 @@ const App = observer(function App() {
 
         header={<AppHeader />}
 
-        items={calendarApp.calendars.map(c => ({ ...c, onClick: c.toggleActive }))}
+        renderMenu={() => <Menu />}
 
-        renderCalendarEntry={(hour, offset) => <Entry hour={hour} offset={offset} />}
+        renderCalendarEntry={(hour, offset) => {
+          return <Entry hour={hour} offset={offset} />
+        }}
 
         renderCalendarLabel={hour => {
           return <Tiny>{format(addHours(calendarApp.date, hour + 1), 'h a')}</Tiny>
